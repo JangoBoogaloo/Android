@@ -1,0 +1,26 @@
+apply plugin: "com.android.model.application"
+
+model {
+    android {
+        compileSdkVersion = 15
+        buildToolsVersion = "23.0.2"
+
+        defaultConfig.with {
+            applicationId = "dev.jango.camera_renderer"
+            minSdkVersion.apiLevel = 15
+            targetSdkVersion.apiLevel = 15
+        }
+    }
+
+    android.buildTypes {
+        release {
+            minifyEnabled = false
+        }
+        debug {
+            minifyEnabled = false
+            ndk.with {
+                debuggable = true
+            }
+        }
+    }
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Camera_Renderer</string>
+    <item name="tag_first" type="id" />
+    <item name="tag_second" type="id" />
+</resources>
