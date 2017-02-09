@@ -1,0 +1,2 @@
+include ':Camera_Renderer'
+project(':Camera_Renderer').projectDir = new File('Camera_Renderer')
