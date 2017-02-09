@@ -11,11 +11,6 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.util.Log;
 
-/**
- * Renders the video stream of the camera opened by the EPSON SDK
- * <p>Must be created in a thread holding a valid OpenGL context.</p>
- * <p>Uses OpenGL extension <code>GL_OES_EGL_image_external</code> to access the camera's video stream.</p>
- */
 public class CameraSurfaceTextureRenderer extends CameraRenderer
 {
     private static final String TAG = CameraSurfaceTextureRenderer.class.getName();
