@@ -29,12 +29,14 @@ public class Renderer implements GLSurfaceView.Renderer {
 
     public static int mWidth;
     public static int mHeight;
+    // When surface changed size, reassign high and width
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         mWidth = width;
         mHeight = height;
     }
 
+    // Draw the current frame
     @Override
     public void onDrawFrame(GL10 gl) {
         switch (CurrentRenderMode)
