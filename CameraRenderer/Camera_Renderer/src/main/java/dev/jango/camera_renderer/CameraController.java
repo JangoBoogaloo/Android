@@ -42,7 +42,9 @@ public class CameraController {
             Log.e(TAG, "No camera found.");
             return null;
         }
-
+        /* If the facing of the camera is opposite to that of the screen,create a new
+        *  camera object for a hardware camera.
+        * */
         for (int i = 0; i < cameraVector.size(); i++) {
             if (Camera.CameraInfo.CAMERA_FACING_BACK == cameraVector.get(i).facing) {
                 return Camera.open(i);
@@ -51,6 +53,9 @@ public class CameraController {
         return null;
     }
 
+    /* Check number of Camera, then try to create Camera information for each cameras,
+    *  and add to a vector
+    * */
     private static Vector<Camera.CameraInfo> getCameraVector() {
         int numberOfCameras = Camera.getNumberOfCameras();
 
@@ -67,6 +72,7 @@ public class CameraController {
 
     public int previewWidth = 0;
     public int previewHeight = 0;
+    //Set preview size to optimal preview size
     public void setPreviewCallback(Camera.PreviewCallback previewCallback) {
         Camera.Parameters parameters = mCamera.getParameters();
         Camera.Size optimalPreviewSize = getOptimalPreviewSize(parameters.getSupportedPreviewSizes(), Renderer.mWidth, Renderer.mHeight);
@@ -90,11 +96,15 @@ public class CameraController {
         mCamera.startPreview();
     }
 
+    // Try to find the optimal preview size
     private static Camera.Size getOptimalPreviewSize(List<Camera.Size> sizes, int targetWidth, int targetHeight)
     {
         final double ASPECT_TOLERANCE = 0.1;
         double targetRatio = (double) targetWidth / targetHeight;
-        if (sizes == null) return null;
+        if (sizes == null) {
+            Log.e(TAG, "No camera size found.");
+            return null;
+        }
 
         Camera.Size optimalSize = null;
         double minDiff = Double.MAX_VALUE;
